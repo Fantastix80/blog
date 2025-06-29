@@ -19,6 +19,10 @@ export default defineConfig({
     build: {
       chunkSizeWarningLimit: 1200,
     },
+    server: {
+      host: true,
+      allowedHosts: ['blog.jeanvw.fr'],
+    },
   },
   markdown: {
     syntaxHighlight: false,
