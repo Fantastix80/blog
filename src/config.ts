@@ -1,11 +1,13 @@
 import type { GithubConfig, Link, PostConfig, Project, ProjectConfig, Site, SkillsShowcaseConfig, SocialLink, TagsConfig } from '~/types'
 
 export const SITE: Site = {
-  title: 'Litos',
-  description: 'Litos is a blog theme built with Astro.js and Dnzzk2.',
-  website: 'https://litos.vercel.app/',
+  title: "Hell0W0rld's blog",
+  subtitle: "A cybersecurity french student's blog",
+  description1: "Hey ! I'm Jean a 4th year cybersecurity student. I have built a personal homelab (also working on a personnal SOC), CDSA certified and currently interested in CTFs. I work as a cybersecurity engineer so I will use this blog to track my journey into the IT world.",
+  description2: "This will serve as a reminder for my future me but you might also find interesting stuff for you who knows ;)",
+  website: 'https://blog.jeanvw.fr/',
   base: '/',
-  author: 'Dnzzk2',
+  author: 'Jean',
   ogImage: '/og-image.jpg',
 }
 
@@ -18,11 +20,15 @@ export const HEADER_LINKS: Link[] = [
     name: 'Projects',
     url: '/projects',
   },
+  {
+    name: 'Tags',
+    url: '/tags',
+  },
 ]
 
 export const FOOTER_LINKS: Link[] = [
   {
-    name: 'Readme',
+    name: 'Home',
     url: '/',
   },
   {
@@ -42,19 +48,19 @@ export const FOOTER_LINKS: Link[] = [
 // get icon https://icon-sets.iconify.design/
 export const SOCIAL_LINKS: SocialLink[] = [
   {
+    name: 'linkedin',
+    url: 'https://www.linkedin.com/in/jeanvwg/',
+    icon: 'icon-[ri--linkedin-box-fill]',
+  },
+  {
     name: 'github',
-    url: 'https://github.com/yourname',
+    url: 'https://github.com/Fantastix80',
     icon: 'icon-[ri--github-fill]',
   },
   {
-    name: 'twitter',
-    url: 'https://x.com/yourname',
-    icon: 'icon-[ri--twitter-x-fill]',
-  },
-  {
-    name: 'bilibili',
-    url: 'https://space.bilibili.com/yourSpaceId',
-    icon: 'icon-[ri--bilibili-fill]',
+    name: 'website',
+    url: 'https://jeanvw.fr',
+    icon: 'icon-[akar-icons--globe]',
   },
 ]
 
@@ -75,20 +81,36 @@ export const SKILLSSHOWCASE_CONFIG: SkillsShowcaseConfig = {
       direction: 'left',
       skills: [
         {
-          name: 'JavaScript',
-          icon: 'icon-[mdi--language-javascript]',
+          name: 'Python',
+          icon: 'icon-[mdi--language-python]',
         },
         {
-          name: 'CSS',
-          icon: 'icon-[mdi--language-css3]',
+          name: 'C',
+          icon: 'icon-[mdi--language-c]',
         },
         {
-          name: 'HTML',
-          icon: 'icon-[mdi--language-html5]',
+          name: 'C++',
+          icon: 'icon-[mdi--language-cpp]',
         },
         {
-          name: 'TypeScript',
-          icon: 'icon-[mdi--language-typescript]',
+          name: 'Rust',
+          icon: 'icon-[mdi--language-rust]',
+        },
+        {
+          name: 'React',
+          icon: 'icon-[mdi--react]',
+        },
+        {
+          name: 'PHP',
+          icon: 'icon-[mdi--language-php]',
+        },
+        {
+          name: 'Java',
+          icon: 'icon-[mdi--language-java]',
+        },
+        {
+          name: 'Assembly',
+          icon: 'icon-[mdi--code-tags]',
         },
       ],
     },
@@ -96,28 +118,28 @@ export const SKILLSSHOWCASE_CONFIG: SkillsShowcaseConfig = {
       direction: 'right',
       skills: [
         {
-          name: 'Astro',
-          icon: 'icon-[lineicons--astro]',
+          name: 'PowerBI',
+          icon: 'icon-[simple-icons--microsoft]',
         },
         {
-          name: 'Node.js',
-          icon: 'icon-[mdi--nodejs]',
+          name: 'SQL',
+          icon: 'icon-[simple-icons--mysql]',
         },
         {
-          name: 'React',
-          icon: 'icon-[mdi--react]',
+          name: 'Intune',
+          icon: 'icon-[simple-icons--microsoft]',
         },
         {
-          name: 'Next.js',
-          icon: 'icon-[devicon--nextjs]',
+          name: 'MongoDB',
+          icon: 'icon-[lineicons--mongodb]',
         },
         {
-          name: 'Tailwind CSS',
-          icon: 'icon-[mdi--tailwind]',
+          name: 'EntraID',
+          icon: 'icon-[simple-icons--microsoft]',
         },
         {
-          name: 'Iconify',
-          icon: 'icon-[line-md--iconify2-static]',
+          name: 'Splunk',
+          icon: 'icon-[simple-icons--splunk]',
         },
       ],
     },
@@ -125,20 +147,28 @@ export const SKILLSSHOWCASE_CONFIG: SkillsShowcaseConfig = {
       direction: 'left',
       skills: [
         {
-          name: 'Ubuntu',
-          icon: 'icon-[mdi--ubuntu]',
+          name: 'Unreal Engine',
+          icon: 'icon-[mdi--unreal]',
         },
         {
           name: 'Git',
           icon: 'icon-[mdi--git]',
         },
         {
-          name: 'MongoDB',
-          icon: 'icon-[lineicons--mongodb]',
+          name: 'Binaryninja',
+          icon: 'icon-[mdi--ninja]',
         },
         {
-          name: 'Vercel',
-          icon: 'icon-[lineicons--vercel]',
+          name: 'Wireshark',
+          icon: 'icon-[simple-icons--wireshark]',
+        },
+        {
+          name: 'Linux',
+          icon: 'icon-[mdi--linux]',
+        },
+        {
+          name: 'ACL',
+          icon: 'icon-[mdi--mountain-outline]',
         },
       ],
     },
@@ -155,15 +185,15 @@ export const SKILLSSHOWCASE_CONFIG: SkillsShowcaseConfig = {
 
 export const GITHUB_CONFIG: GithubConfig = {
   ENABLED: true,
-  GITHUB_USERNAME: 'Dnzzk2',
+  GITHUB_USERNAME: 'Fantastix80',
   TOOLTIP_ENABLED: true,
 }
 
 export const POSTS_CONFIG: PostConfig = {
   title: 'Posts',
-  description: 'Posts by Dnzzk2',
-  introduce: 'Here, I will share the usage instructions for this theme to help you quickly use it.',
-  author: 'Dnzzk2',
+  description: "Here, I am sure you will find something interesting for you ^^",
+  introduce: "Here, I am sure you will find something interesting for you ^^",
+  author: 'Jean',
   homePageConfig: {
     size: 5,
     type: 'compact',
@@ -190,26 +220,40 @@ export const POSTS_CONFIG: PostConfig = {
 
 export const TAGS_CONFIG: TagsConfig = {
   title: 'Tags',
-  description: 'All tags of Posts',
+  description: 'All the tags for posts are here, you can click to filter them.',
   introduce: 'All the tags for posts are here, you can click to filter them.',
 }
 
 export const PROJECTS_CONFIG: ProjectConfig = {
   title: 'Projects',
-  description: 'The examples of my projects.',
-  introduce: 'The examples of my projects.',
+  description: 'Here are some examples of my projects.',
+  introduce: 'Here are some examples of my projects.',
 }
 
 // get icon https://icon-sets.iconify.design/
 export const ProjectList: Project[] = [
   {
-    name: 'Litos',
-    description: 'A Simple & Modern Blog Theme for Astro.',
-    githubUrl: 'https://github.com/Dnzzk2/Litos',
-    website: 'https://litos.vercel.app/',
+    name: "Portfolio",
+    description: "My personnal portfolio built in 2022.",
+    website: 'https://jeanvw.fr',
+    type: 'image',
+    icon: '/projects/logo.png',
+  },
+  {
+    name: "Pokemon",
+    description: "A case-opening like website. Your goal is to be in the top leaderboard !",
+    website: 'https://pokemon.jeanvw.fr',
+    type: 'image',
+    icon: '/projects/logo.png',
+  },
+  /*{
+    name: "Litos",
+    description: "A simple and modern blog.",
+    githubUrl: 'https://github.com/Fantastix80',
+    website: 'https://blog.jeanvw.fr',
     type: 'image',
     icon: '/projects/logo.png',
     star: 11,
     fork: 4,
-  },
+  },*/
 ]

@@ -18,23 +18,23 @@ const allPosts = await getCollection('posts')
 const posts = postsSort(allPosts).slice(0, size)
 ---
 
-<Layout title="Readme" description={SITE.description}>
+<Layout title="Home" description={SITE.subtitle}>
   <div class="relative z-[1]">
     <div class="py-8 pb-10 px-6 sm:px-8">
       <h1 class="flex flex-col gap-2">
-        <span class="text-4xl sm:text-5xl tracking-tight"> Litos </span>
+        <span class="text-4xl sm:text-5xl tracking-tight"> {SITE.title} </span>
         <span class="text-muted-foreground font-light text-xl sm:text-2xl block tracking-wide text-balance">
-          A Simple & Modern Blog Theme for Astro
+          {SITE.subtitle}
         </span>
       </h1>
       <div class="pro text-muted-foreground text-balance">
         <p>
-          Litos is a modern, high-performance blog theme built on Astro and inspired by
-          <a href="https://github.com/needim" target="_blank" rel="nofollow noreferrer"> @needim</a>, an excellent developer.
+          <!--Litos is a modern, high-performance blog theme built on Astro and inspired by
+          <a href="https://github.com/needim" target="_blank" rel="nofollow noreferrer"> @needim</a>, an excellent developer.-->
+          {SITE.description1}
         </p>
         <p>
-          Implementing elegant responsive design using Tailwind CSS, Integrating React components to achieve a smooth interactive
-          experience, Support switching between light and dark themes and provide smooth transition animations.
+          {SITE.description2}
         </p>
       </div>
       <div class="mt-6 flex gap-6">

@@ -10,8 +10,10 @@
  */
 export type Site = {
   title: string
+  subtitle: string
   base: string
-  description: string
+  description1: string
+  description2: string
   author: string
   website: string
   ogImage: string
