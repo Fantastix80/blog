@@ -1,0 +1,115 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import SectionDivider from '~/components/base/SectionDivider.astro'
+import GithubContributions from '~/components/base/GithubContributions.tsx'
+import SocialLink from '~/components/base/SocialLink.astro'
+import List from '~/components/posts/card/List.astro'
+import SkillsShowcase from '~/components/base/SkillsShowcase.astro'
+import { getCollection } from 'astro:content'
+import { postsSort } from '~/lib/utils'
+import { i18n, getLocaleFromPath, type Locale } from '~/i18n'
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+  ]
+}
+
+const { lang } = Astro.params
+const locale = lang as Locale
+
+const {
+  siteConfig,
+  socialLinks,
+  skillsConfig,
+  githubConfig,
+  postsConfig,
+  githubContributionsConfig,
+  skillsHeaderConfig,
+  postsHeaderConfig
+} = i18n.get(locale)
+
+const { ENABLED, GITHUB_USERNAME, TOOLTIP_ENABLED } = githubConfig
+const { SKILLS_ENABLED, SKILLS_DATA } = skillsConfig
+const { size, type } = postsConfig.homePageConfig
+
+const allPosts = (await getCollection('posts')).filter(
+  (post) => !post.data.draft && post.data.lang === lang
+)
+const posts = postsSort(allPosts).slice(0, size)
+---
+
+<Layout title="Home" description={siteConfig.subtitle}>
+  <div class="relative z-[1]">
+    <div class="py-8 pb-10 px-6 sm:px-8">
+      <h1 class="flex flex-col gap-2">
+        <span class="text-4xl sm:text-5xl tracking-tight">{siteConfig.title}</span>
+        <span class="text-muted-foreground font-light text-xl sm:text-2xl block tracking-wide text-balance">
+          {siteConfig.subtitle}
+        </span>
+      </h1>
+      <div class="pro text-muted-foreground text-balance">
+        <p>{siteConfig.description1}</p>
+        <p>{siteConfig.description2}</p>
+      </div>
+      <div class="mt-6 flex gap-6">
+        {
+          socialLinks.map((item) => (
+            <SocialLink
+              href={item.url}
+              icon={item.icon}
+              aria-label={`Link of ${item.name}`}
+              count={item.count}
+              label="followers"
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      ENABLED && (
+        <>
+          <SectionDivider />
+          <div class="py-8 pb-10 px-6 max-md:px-6">
+            <div class="px-2 max-md:px-0">
+              <h2 class="text-2xl sm:text-3xl">{githubContributionsConfig.spotlightTitle}</h2>
+              <p class="text-muted-foreground mb-6 mt-1">{githubContributionsConfig.spotlightDescription}</p>
+            </div>
+            <GithubContributions
+              username={GITHUB_USERNAME}
+              tooltipEnabled={TOOLTIP_ENABLED}
+              client:load
+              transition:animate="none"
+            />
+          </div>
+        </>
+      )
+    }
+
+    {
+      SKILLS_ENABLED && SKILLS_DATA.length > 0 && (
+        <>
+          <SectionDivider />
+          <div class="py-8 pb-10 px-6 max-md:px-6">
+            <div class="px-2 max-md:px-0">
+              <h2 class="text-2xl sm:text-3xl">{skillsHeaderConfig.skillsTitle}</h2>
+              <p class="text-muted-foreground mb-6 mt-1">{skillsHeaderConfig.skillsDescription}</p>
+            </div>
+            <SkillsShowcase skillsData={SKILLS_DATA} />
+          </div>
+        </>
+      )
+    }
+
+    <SectionDivider />
+    <div class="py-8 pb-10 px-6 sm:px-8">
+      <h2 class="text-3xl">{postsConfig.title}</h2>
+      <p class="text-muted-foreground mb-6 mt-1">
+        {postsHeaderConfig.recentPosts.replace('{count}', posts.length.toString())}
+      </p>
+      <List posts={posts} type={type} heroImageLayout={postsConfig.homePageConfig?.heroImageLayout} lang={lang} />
+    </div>
+  </div>
+</Layout>

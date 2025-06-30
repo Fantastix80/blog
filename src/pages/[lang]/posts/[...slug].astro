@@ -10,44 +10,50 @@ import PostFeatures from '~/components/posts/toc/PostFeatures.astro'
 
 export async function getStaticPaths() {
   const posts = (await getCollection('posts')).filter((post) => !post.data.draft)
-  const sortedPosts = postsSort(posts)
 
-  return sortedPosts.map((post, index) => ({
-    params: { slug: post.slug },
-    props: {
-      post,
-      posts: sortedPosts,
-      prev: index + 1 < sortedPosts.length ? sortedPosts[index + 1] : null,
-      next: index > 0 ? sortedPosts[index - 1] : null,
-    },
-  }))
+  return posts.flatMap((post, index, arr) => {
+    return ['fr', 'en'].map((lang) => ({
+      params: { lang, slug: post.slug },
+      props: {
+        post,
+        posts: arr,
+        prev: index + 1 < arr.length ? arr[index + 1] : null,
+        next: index > 0 ? arr[index - 1] : null,
+        lang,
+      },
+    }))
+  })
 }
 
-const { post, posts, prev, next } = Astro.props
+const { post, posts, prev, next, lang } = Astro.props
 const { data: frontmatter } = post
 const { Content, headings, remarkPluginFrontmatter } = await post.render()
 
 const hasValidHeadings = headings.length > 1
 const hasImage = !!frontmatter.heroImage
 const isVertical = frontmatter.heroImageAspectRatio === '3/4'
+
 const layoutMap = {
   'no-image': NoImage,
   'vertical': Vertical,
   'horizontal': Horizontal,
 }
-
 const layoutKey = !hasImage ? 'no-image' : isVertical ? 'vertical' : 'horizontal'
 const PostLayout = layoutMap[layoutKey]
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description || frontmatter.title} image={frontmatter.ogImage}>
+<Layout
+  title={frontmatter.title}
+  description={frontmatter.description || frontmatter.title}
+  image={frontmatter.ogImage}
+>
   <div class="fullPage relative flex flex-col justify-between">
     <PostLayout {frontmatter} minutesRead={remarkPluginFrontmatter.minutesRead}>
       <Content />
     </PostLayout>
     <div class="px-6 sm:px-8 pb-6 sm:pb-8">
-      {posts.length > 1 && <PostNavigation {prev} {next} />}
+      {posts.length > 1 && <PostNavigation {prev} {next} lang={lang} />}
     </div>
-    {hasValidHeadings && <PostFeatures {post} {posts} {headings} />}
+    {hasValidHeadings && <PostFeatures {post} {posts} {headings} lang={lang} />}
   </div>
 </Layout>

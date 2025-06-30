@@ -11,27 +11,36 @@ import List from '~/components/posts/card/List.astro'
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const allPosts = await getCollection('posts')
   const sortedPosts = postsSort(allPosts)
+  const langs = ['fr', 'en']
   const uniqueTags = [...new Set(sortedPosts.flatMap((post) => post.data.tags || []))]
 
-  return uniqueTags
-    .map((tag) => {
-      const tagPosts = sortedPosts.filter((post) => post.data.tags?.includes(tag))
-      return paginate(tagPosts, {
-        params: { tag },
-        props: { tag },
-        pageSize: POSTS_CONFIG.tagsPageConfig.size,
+  return langs
+    .flatMap((lang) =>
+      uniqueTags.map((tag) => {
+        const tagPosts = sortedPosts.filter(
+          (post) => post.data.tags?.includes(tag) && post.data.lang === lang
+        )
+
+        return paginate(tagPosts, {
+          params: { lang, tag },
+          props: { tag, lang },
+          pageSize: POSTS_CONFIG.tagsPageConfig.size,
+        })
       })
-    })
+    )
     .flat()
 }
 
 interface Props {
   page: Page<CollectionEntry<'posts'>>
   tag: string
+  lang: 'fr' | 'en'
 }
 
-const { page, tag } = Astro.props
-const description = `Posts with the tag #${tag}`
+const { page, tag, lang } = Astro.props
+const description = lang === 'fr'
+  ? `Articles avec le tag #${tag}`
+  : `Posts with the tag #${tag}`
 ---
 
 <Layout title={`#${tag}`} {description}>
@@ -39,9 +48,9 @@ const description = `Posts with the tag #${tag}`
     <div class="mb-12 md:mb-16">
       <div class="flex flex-col gap-3">
         <nav class="flex items-center gap-3 text-sm text-muted-foreground/80">
-          <a href="/tags" class="group flex items-center gap-2 hover:text-primary transition-colors">
+          <a href={`/${lang}/tags`} class="group flex items-center gap-2 hover:text-primary transition-colors">
             <span class="icon-[ph--tag-simple] w-4 h-4"></span>
-            <span>Tags</span>
+            <span>{lang === 'fr' ? 'Tags' : 'Tags'}</span>
           </a>
           <span class="text-muted-foreground/30">/</span>
           <span class="text-foreground/90">#{tag}</span>
@@ -54,7 +63,9 @@ const description = `Posts with the tag #${tag}`
           <div class="flex flex-col items-end justify-center gap-1 text-sm text-muted-foreground/70">
             <div class="flex items-center gap-2">
               <span class="icon-[ph--article-medium] w-4 h-4"></span>
-              <span>{page.total} {page.total === 1 ? 'post' : 'posts'}</span>
+              <span>
+                {page.total} {lang === 'fr' ? (page.total === 1 ? 'article' : 'articles') : (page.total === 1 ? 'post' : 'posts')}
+              </span>
             </div>
           </div>
         </div>
@@ -62,9 +73,9 @@ const description = `Posts with the tag #${tag}`
     </div>
 
     <div class="fade-up space-y-8">
-      <List posts={page.data} type={POSTS_CONFIG.tagsPageConfig.type} heroImageLayout={POSTS_CONFIG.tagsPageConfig?.heroImageLayout} />
+      <List posts={page.data} type={POSTS_CONFIG.tagsPageConfig.type} heroImageLayout={POSTS_CONFIG.tagsPageConfig?.heroImageLayout} lang={lang} />
     </div>
 
-    <Pagination {page} baseUrl={`/tags/${tag}`} class="mt-12" />
+    <Pagination {page} baseUrl={`/${lang}/tags/${tag}`} class="mt-12" />
   </div>
 </Layout>

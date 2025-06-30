@@ -1,5 +1,10 @@
 ---
+const { lang = 'en' } = Astro.props;
 
+const labels = {
+  en: 'Back to top',
+  fr: 'Retour en haut',
+};
 ---
 
 <button
@@ -11,7 +16,7 @@
            opacity-0 invisible translate-y-4
            dark:bg-primary/15 dark:hover:bg-primary/25
            dark:text-primary/80 dark:hover:text-primary"
-  aria-label="Back to top"
+  aria-label={labels[lang]}
 >
   <span class="icon-[ph--arrow-up] w-4 h-4 transform transition-transform group-hover:-translate-y-0.5"></span>
 </button>

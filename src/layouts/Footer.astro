@@ -1,8 +1,12 @@
 ---
-import { FOOTER_LINKS } from '~/config'
+import { i18n, getLocaleFromPath, type Locale } from '~/i18n'
 import SectionDivider from '~/components/base/SectionDivider.astro'
 import ThemeToggle from '~/components/theme/ThemeToggle'
 import FooterLink from '~/components/base/FooterLink.astro'
+
+const { pathname } = Astro.url
+const locale = getLocaleFromPath(pathname) as Locale
+const { footerLinks, siteConfig } = i18n.get(locale)
 ---
 
 <SectionDivider position="bottom" />
@@ -10,11 +14,11 @@ import FooterLink from '~/components/base/FooterLink.astro'
   <div class="py-4">
     <div class="pb-8">
       <div class="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-muted-foreground pb-4 px-6 sm:px-8 border-b border-border/50">
-        {FOOTER_LINKS.map((link) => <FooterLink href={link.url}>{link.name}</FooterLink>)}
+        {footerLinks.map((link) => <FooterLink href={link.url}>{link.name}</FooterLink>)}
       </div>
       <div class="text-sm text-muted-foreground px-6 sm:px-8 py-4">
         <div class="flex justify-center items-center flex-wrap gap-4">
-          © 2025 Hell0W0rld's blog. All rights reserved.
+          © 2025 {siteConfig.title}. {locale === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
         </div>
       </div>
     </div>

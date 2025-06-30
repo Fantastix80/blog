@@ -1,6 +1,7 @@
 ---
 title: 'Project structure'
 description: 'The project structure of Litos Theme Project'
+lang: en
 pubDate: 2025-05-04
 tags: ['Project-structure']
 recommend: true

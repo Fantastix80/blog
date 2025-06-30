@@ -2,6 +2,7 @@
 title: 'Getting Started'
 pubDate: 2025-05-05
 description: 'A comprehensive guide to getting started with the Litos Theme'
+lang: en
 recommend: true
 tags: ['Tutorial']
 heroImage: 'Getting-Started.webp'
