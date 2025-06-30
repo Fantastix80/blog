@@ -9,7 +9,7 @@ import PostNavigation from '~/components/posts/base/PostNavigation.astro'
 import PostFeatures from '~/components/posts/toc/PostFeatures.astro'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts')
+  const posts = (await getCollection('posts')).filter((post) => !post.data.draft)
   const sortedPosts = postsSort(posts)
 
   return sortedPosts.map((post, index) => ({

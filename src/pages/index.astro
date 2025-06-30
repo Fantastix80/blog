@@ -14,7 +14,7 @@ const { ENABLED, GITHUB_USERNAME, TOOLTIP_ENABLED } = GITHUB_CONFIG
 const { size, type } = POSTS_CONFIG.homePageConfig
 const { SKILLS_ENABLED, SKILLS_DATA } = SKILLSSHOWCASE_CONFIG
 
-const allPosts = await getCollection('posts')
+const allPosts = (await getCollection('posts')).filter((post) => !post.data.draft)
 const posts = postsSort(allPosts).slice(0, size)
 ---
 

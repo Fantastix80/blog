@@ -6,6 +6,7 @@ tags: ['Configuration']
 recommend: true
 heroImage: 'Basic-configuration.webp'
 ogImage: 'Basic-configuration.webp'
+draft: true
 ---
 
 Welcome to the Litos theme configuration guide. All essential settings for your website are managed through the `src/config.ts` file. This comprehensive guide will walk you through each configuration section to help you customize your site effectively.
