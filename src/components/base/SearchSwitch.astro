@@ -40,13 +40,40 @@
   // 声明 pagefind 类型
   declare const pagefind: any
 
+  // Fonction pour détecter la langue actuelle
+  const getCurrentLanguage = (): string => {
+    // Méthode 1: Depuis l'URL (ex: /fr/article ou /en/article)
+    const pathLang = window.location.pathname.split('/')[1]
+    const supportedLangs = ['fr', 'en']
+    
+    if (supportedLangs.includes(pathLang)) {
+      return pathLang
+    }
+    
+    return 'fr'
+  }
+
+  // Fonction pour vérifier si un résultat correspond à la langue actuelle
+  const isResultInCurrentLanguage = (url: string, currentLang: string): boolean => {
+    // Extraire le code de langue depuis l'URL
+    const urlLangMatch = url.match(/\/([a-z]{2})\//)?.[1]
+    
+    // Si l'URL a un préfixe de langue explicite
+    if (urlLangMatch) {
+      return urlLangMatch === currentLang
+    }
+    
+    // Si pas de préfixe de langue, considérer comme langue par défaut
+    // Ajustez 'fr' selon votre langue par défaut
+    return currentLang === 'fr'
+  }
+
   // 打开搜索面板
   const openSearch = () => {
     searchMask?.classList.remove('hidden')
     searchMask?.offsetHeight
     searchMask?.classList.remove('opacity-0')
     searchInput?.focus()
-    // 移除了 document.body.style.overflow = 'hidden'
   }
 
   // 关闭搜索面板
@@ -63,7 +90,7 @@
     searchMask?.classList.add('opacity-0')
     if (searchInput) searchInput.value = ''
     if (searchResults) searchResults.innerHTML = ''
-      searchMask?.classList.add('hidden')
+    searchMask?.classList.add('hidden')
   }
 
   // 点击开关
@@ -89,28 +116,40 @@
     }
   })
 
-  // input event
+  // input event avec filtrage par langue
   const handleInput = async (e: Event) => {
     if (searchResults) {
       searchResults.innerHTML = ''
     }
+    
     if (import.meta.env.PROD) {
       const target = e.target as HTMLInputElement
       const search = await pagefind.debouncedSearch(target.value)
+      const currentLang = getCurrentLanguage()
 
-      // 添加结果长度判断
-      if (!search?.results && search?.results.length === 0 ) {
-        const noResults = document.createElement('div')
-        noResults.className = 'search-results-item text-center py-4 text-muted-foreground'
-        noResults.textContent = 'No results found'
-        searchResults?.appendChild(noResults)
+      // Filtrer les résultats par langue
+      const filteredResults = []
+      for (const result of search.results) {
+        const data = await result.data()
+        if (isResultInCurrentLanguage(data.url, currentLang)) {
+          filteredResults.push({ result, data })
+        }
+      }
+
+      if (!filteredResults.length) {
+        if (searchResults && !searchResults.querySelector('.no-results-message')) {
+          const noResults = document.createElement('div')
+          noResults.className = 'search-results-item text-center py-4 text-muted-foreground no-results-message'
+          noResults.textContent = currentLang === 'fr' ? 'Aucun résultat' : 'No results found'
+          searchResults.appendChild(noResults)
+        }
         return
       }
 
-      if(search?.results){
-        for (const result of search?.results) {
-        const data = await result.data()
-        // 显示主结果
+
+      // Afficher les résultats filtrés
+      for (const { result, data } of filteredResults) {
+        // Afficher le résultat principal
         const resultItem = document.createElement('a')
         resultItem.href = data.url
         resultItem.className = 'search-results-item'
@@ -121,14 +160,14 @@
         resultItem.addEventListener('click', closeSearchIn)
         searchResults?.appendChild(resultItem)
 
-        // 显示子结果（如果有）
+        // Afficher les sous-résultats (si ils existent et sont dans la bonne langue)
         if (data.sub_results) {
           for (const subResult of data.sub_results) {
-            if (subResult.excerpt === data.excerpt) continue;
+            if (subResult.excerpt === data.excerpt) continue
+            if (!isResultInCurrentLanguage(subResult.url, currentLang)) continue
 
-            const cleanTitle = subResult.title.replace(/\s*[Hh][1-6]$/g, '');
-
-            if (!cleanTitle) continue; // 跳过空标题
+            const cleanTitle = subResult.title.replace(/\s*[Hh][1-6]$/g, '')
+            if (!cleanTitle) continue
 
             const subItem = document.createElement('a')
             subItem.href = subResult.url
@@ -142,8 +181,8 @@
           }
         }
       }
-      }
     } else {
+      // Mode développement
       const resultItem = document.createElement('a')
       resultItem.href = searchResults?.dataset.base || '/'
       resultItem.className = 'search-results-item'
@@ -164,12 +203,9 @@
     async function loadPagefind() {
       const pagefind = await import(scriptUrl)
 
-      const currentLang = document.documentElement.lang || 'fr';
-
       await pagefind.options({
         'excerptLength': 20,
         'showSubResults': true,
-        'forceLanguage': currentLang,
       })
 
       pagefind.init()
