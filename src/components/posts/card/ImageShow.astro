@@ -1,7 +1,7 @@
 ---
 import type { HeroImageAspectRatio } from '~/types'
 import { formatDate } from '~/lib/utils'
-import { POSTS_CONFIG } from '~/config'
+import { i18n } from '~/i18n'
 import PostTag from '~/components/posts/base/PostTag.astro'
 import RecommendBadge from '~/components/posts/base/RecommendBadge.astro'
 import type { CardProps } from './List.astro'
@@ -9,6 +9,8 @@ import type { CardProps } from './List.astro'
 interface Props extends CardProps {}
 
 const { post, index, heroImageLayout, lang }: Props = Astro.props
+
+const { postsConfig: POSTS_CONFIG } = i18n.get(lang)
 
 const aspectRatioClass: Record<HeroImageAspectRatio, string> = {
   '16/9': 'aspect-[16/9]',

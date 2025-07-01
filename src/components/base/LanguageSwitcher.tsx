@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const languages = [
   { code: 'fr', name: 'Français', flag: 'fr', targetUrl: '/fr' },

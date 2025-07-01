@@ -1,5 +1,7 @@
 ---
-const { lang = 'en' } = Astro.props;
+import type { LangProp } from '~/i18n'
+
+const { lang = 'en' } = Astro.props as LangProp
 
 const labels = {
   en: 'Back to top',

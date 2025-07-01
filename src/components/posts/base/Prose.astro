@@ -1,5 +1,5 @@
 ---
-import { POSTS_CONFIG } from '~/config'
+import { i18n } from '~/i18n'
 import { cn } from '~/lib/utils'
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { class: className } = Astro.props
+const { postsConfig: POSTS_CONFIG } = i18n.get('fr') // adapt if dynamic lang needed
 ---
 
 <div class={cn('markdown', className)} data-pagefind-body>
@@ -39,7 +40,6 @@ const { class: className } = Astro.props
       })
     }
 
-    // 监听暗色模式变化
     const observer = new MutationObserver(() => {
       darkModeHandler()
     })
@@ -51,7 +51,6 @@ const { class: className } = Astro.props
       })
       darkModeHandler()
 
-      // 监听 hover 事件
       document.querySelectorAll('.markdown :not(image-figure-polaroid) img:not(.noDarken)').forEach((img) => {
         img.addEventListener('mouseenter', () => {
           img.style.removeProperty('filter')

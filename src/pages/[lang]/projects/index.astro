@@ -1,10 +1,9 @@
 ---
-import { i18n } from '~/i18n'
+import { i18n, type Locale } from '~/i18n'
 import Layout from '~/layouts/Layout.astro'
 import SectionDivider from '~/components/base/SectionDivider.astro'
 import NumberTicker from '~/components/base/NumberTicker'
 import { cn } from '~/lib/utils'
-
 
 export async function getStaticPaths() {
   return ['fr', 'en'].map((lang) => ({
@@ -12,7 +11,7 @@ export async function getStaticPaths() {
   }))
 }
 
-const { lang } = Astro.params
+const lang = Astro.params.lang as Locale
 const { projectsConfig, projectList } = i18n.get(lang)
 const { title, description, introduce } = projectsConfig
 ---
@@ -29,7 +28,7 @@ const { title, description, introduce } = projectsConfig
       {
         projectList.map((project, index) => (
           <div>
-            <div class="group relative hover:bg-muted/30 dark:hover:bg-muted/30 transition-colors duration-300 px-8 py-4 ">
+            <div class="group relative hover:bg-muted/30 dark:hover:bg-muted/30 transition-colors duration-300 px-8 py-4">
               <div class="absolute right-8 top-4 hidden sm:block">
                 {project.type === 'icon' && <span class={cn('size-10', project.icon)} />}
                 {project.type === 'image' && <img src={project.icon} alt="icon" class={cn('size-10', project.imageClass)} />}
@@ -42,7 +41,7 @@ const { title, description, introduce } = projectsConfig
                 {project.name}
               </a>
               <p class="pr-0 sm:pr-14 text-muted-foreground mt-1">{project.description}</p>
-              <div class="flex flex-col sm:flex-row gap-4 sm:gap-0 items-start sm:items-center justify-between ">
+              <div class="flex flex-col sm:flex-row gap-4 sm:gap-0 items-start sm:items-center justify-between">
                 <div class="flex gap-4">
                   <div class="flex items-center py-1.5 gap-3">
                     {project.star && (

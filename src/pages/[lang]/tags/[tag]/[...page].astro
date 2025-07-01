@@ -2,11 +2,11 @@
 import type { GetStaticPaths, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
-import { POSTS_CONFIG } from '~/config'
 import { postsSort } from '~/lib/utils'
 import Layout from '~/layouts/Layout.astro'
 import Pagination from '~/components/base/Pagination.astro'
 import List from '~/components/posts/card/List.astro'
+import { i18n, type Locale } from '~/i18n'
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const allPosts = await getCollection('posts')
@@ -24,7 +24,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
         return paginate(tagPosts, {
           params: { lang, tag },
           props: { tag, lang },
-          pageSize: POSTS_CONFIG.tagsPageConfig.size,
+          pageSize: i18n.get(lang as Locale).postsConfig.tagsPageConfig.size,
         })
       })
     )
@@ -34,10 +34,12 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 interface Props {
   page: Page<CollectionEntry<'posts'>>
   tag: string
-  lang: 'fr' | 'en'
+  lang: Locale
 }
 
-const { page, tag, lang } = Astro.props
+const { page, tag, lang } = Astro.props as Props
+
+const { postsConfig } = i18n.get(lang)
 const description = lang === 'fr'
   ? `Articles avec le tag #${tag}`
   : `Posts with the tag #${tag}`
@@ -50,7 +52,7 @@ const description = lang === 'fr'
         <nav class="flex items-center gap-3 text-sm text-muted-foreground/80">
           <a href={`/${lang}/tags`} class="group flex items-center gap-2 hover:text-primary transition-colors">
             <span class="icon-[ph--tag-simple] w-4 h-4"></span>
-            <span>{lang === 'fr' ? 'Tags' : 'Tags'}</span>
+            <span>Tags</span>
           </a>
           <span class="text-muted-foreground/30">/</span>
           <span class="text-foreground/90">#{tag}</span>
@@ -73,9 +75,14 @@ const description = lang === 'fr'
     </div>
 
     <div class="fade-up space-y-8">
-      <List posts={page.data} type={POSTS_CONFIG.tagsPageConfig.type} heroImageLayout={POSTS_CONFIG.tagsPageConfig?.heroImageLayout} lang={lang} />
+      <List
+        posts={page.data}
+        type={postsConfig.tagsPageConfig.type}
+        heroImageLayout={postsConfig.tagsPageConfig?.heroImageLayout}
+        lang={lang}
+      />
     </div>
 
-    <Pagination {page} baseUrl={`/${lang}/tags/${tag}`} class="mt-12" />
+    <Pagination page={page} baseUrl={`/${lang}/tags/${tag}`} lang={lang} class="mt-12" />
   </div>
 </Layout>

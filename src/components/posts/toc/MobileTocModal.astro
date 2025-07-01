@@ -1,13 +1,16 @@
 ---
 import type { MarkdownHeading } from 'astro'
-import { POSTS_CONFIG } from '~/config'
 import { cn } from '~/lib/utils'
+import { i18n } from '~/i18n'
 
 interface Props {
   headings: MarkdownHeading[]
+  lang: 'fr' | 'en'
 }
 
-const { headings } = Astro.props
+const { headings, lang } = Astro.props
+const { postsConfig: POSTS_CONFIG } = i18n.get(lang)
+
 // 优化过滤逻辑，减少遍历次数
 const filteredHeadings = headings.reduce(
   (acc, heading) => {

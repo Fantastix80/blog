@@ -65,7 +65,7 @@ const { notFoundConfig } = i18n.get(locale)
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.animate-typing').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('.animate-typing').forEach((el) => {
       const text = el.textContent || ''
       el.style.setProperty('--typing-width', `${text.length}ch`)
     })

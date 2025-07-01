@@ -1,6 +1,6 @@
 ---
 import { cn } from '~/lib/utils'
-import { POSTS_CONFIG } from '~/config'
+import { i18n } from '~/i18n'
 import type { CollectionEntry } from 'astro:content'
 
 interface Props {
@@ -11,6 +11,8 @@ interface Props {
 }
 
 const { class: className, post, posts, lang } = Astro.props
+
+const { postsConfig: POSTS_CONFIG } = i18n.get(lang)
 
 const postIndex = posts.findIndex((p) => p.slug === post.slug)
 const pageSize = POSTS_CONFIG.postPageConfig.size

@@ -11,6 +11,7 @@ import type {
 } from '~/types'
 
 export type Locale = 'fr' | 'en'
+export type LangProp = { lang?: Locale }
 
 export const getLocaleFromPath = (pathname: string): Locale =>
   pathname.startsWith('/en') ? 'en' : 'fr'
@@ -34,6 +35,7 @@ const getSiteConfig = (locale: Locale): Site => ({
   base: '/',
   author: 'Jean',
   ogImage: '/og-image.jpg',
+  footerText: locale === 'fr' ? "© 2025 Hell0W0rld's blog. Tous droits réservés." : "© 2025 Hell0W0rld's blog. All rights reserved.",
 })
 
 const getHeaderLinks = (locale: Locale): Link[] => [
@@ -67,7 +69,7 @@ const getSocialLinks = (): SocialLink[] => [
   },
 ]
 
-const getSkillsShowcaseConfig = (locale: Locale): SkillsShowcaseConfig => ({
+const getSkillsShowcaseConfig = (): SkillsShowcaseConfig => ({
   SKILLS_ENABLED: true,
   SKILLS_DATA: [
     {
@@ -218,7 +220,7 @@ export const i18n = {
     headerLinks: getHeaderLinks(locale),
     footerLinks: getFooterLinks(locale),
     socialLinks: getSocialLinks(),
-    skillsConfig: getSkillsShowcaseConfig(locale),
+    skillsConfig: getSkillsShowcaseConfig(),
     githubConfig: getGithubConfig(),
     postsConfig: getPostConfig(locale),
     tagsConfig: getTagsConfig(locale),
@@ -230,3 +232,5 @@ export const i18n = {
     notFoundConfig: getNotFoundConfig(locale),
   }),
 }
+
+export { getSiteConfig, getPostConfig }

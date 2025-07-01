@@ -1,7 +1,6 @@
 ---
 import { i18n, getLocaleFromPath, type Locale } from '~/i18n'
 import SectionDivider from '~/components/base/SectionDivider.astro'
-import ThemeToggle from '~/components/theme/ThemeToggle'
 import FooterLink from '~/components/base/FooterLink.astro'
 
 const { pathname } = Astro.url
@@ -18,7 +17,7 @@ const { footerLinks, siteConfig } = i18n.get(locale)
       </div>
       <div class="text-sm text-muted-foreground px-6 sm:px-8 py-4">
         <div class="flex justify-center items-center flex-wrap gap-4">
-          © 2025 {siteConfig.title}. {locale === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
+          {siteConfig.footerText}
         </div>
       </div>
     </div>

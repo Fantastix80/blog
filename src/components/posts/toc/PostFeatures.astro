@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import type { MarkdownHeading } from 'astro'
-import { POSTS_CONFIG } from '~/config'
+import { i18n } from '~/i18n'
 import PostActionButton from '~/components/posts/base/PostActionButton.astro'
 import TableOfContents from './TableOfContents.astro'
 import MobileTocModal from './MobileTocModal.astro'
@@ -14,14 +14,15 @@ interface Props {
 }
 
 const { post, posts, headings, lang } = Astro.props
-const hasHeadings = headings.length > 0
+const POSTS_CONFIG = i18n.get(lang).postsConfig
 
+const hasHeadings = headings.length > 0
 const postIndex = posts.findIndex((p) => p.slug === post.slug)
 const pageSize = POSTS_CONFIG.postPageConfig.size
 const pageNumber = Math.floor(postIndex / pageSize) + 1
 ---
 
-{hasHeadings && <TableOfContents headings={headings} class="hidden lg:block" />}
+{hasHeadings && <TableOfContents headings={headings} lang={lang} class="hidden lg:block" />}
 
 <!-- Mobile Buttons -->
 <div class="lg:hidden fixed bottom-24 right-2 z-50 flex flex-col gap-3">
@@ -61,7 +62,7 @@ const pageNumber = Math.floor(postIndex / pageSize) + 1
   </div>
 </div>
 
-{hasHeadings && <MobileTocModal headings={headings} />}
+{hasHeadings && <MobileTocModal headings={headings} lang={lang} />}
 
 <script>
   function handleScroll() {
