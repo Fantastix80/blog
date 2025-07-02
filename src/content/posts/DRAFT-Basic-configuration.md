@@ -1,6 +1,7 @@
 ---
 title: 'Basic configuration'
 description: 'Basic setup instructions for Litos theme'
+lang: en
 pubDate: 2025-05-03
 tags: ['Configuration']
 recommend: true

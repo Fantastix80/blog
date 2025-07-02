@@ -1,6 +1,7 @@
 ---
 title: 'Markdown Extension Syntax'
 description: 'A comprehensive guide to enhanced Markdown features in Litos theme'
+lang: en
 pubDate: 2025-04-29
 author: 'Dnzzk2'
 recommend: true

@@ -1,0 +1,54 @@
+---
+import type { GetStaticPaths, Page } from 'astro'
+import { getCollection } from 'astro:content'
+import { postsSort } from '~/lib/utils'
+import { i18n, type Locale } from '~/i18n'
+import Layout from '~/layouts/Layout.astro'
+import Pagination from '~/components/base/Pagination.astro'
+import List from '~/components/posts/card/List.astro'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } }
+  ]
+}
+
+const lang = Astro.params.lang as Locale
+const allPosts = (await getCollection('posts')).filter(p => !p.data.draft && p.data.lang === lang)
+const sortedPosts = postsSort(allPosts)
+
+const { postPageConfig, title, description, introduce } = i18n.get(lang).postsConfig
+const pageSize = postPageConfig.size
+
+const paginated = {
+  data: sortedPosts.slice(0, pageSize),
+  currentPage: 1,
+  lastPage: Math.ceil(sortedPosts.length / pageSize),
+  url: `/${lang}/posts`,
+  start: 1,
+  end: Math.min(pageSize, sortedPosts.length),
+  total: sortedPosts.length,
+  size: pageSize,
+} as unknown as Page<any>
+---
+
+<Layout {title} {description}>
+  <div class="fullPage relative z-[1] py-8 pb-10 px-6 sm:px-8">
+    <h1 class="tracking-tight text-5xl bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent pb-1.5">{title}</h1>
+    <div class="pro text-muted-foreground">
+      <p class="mt-2">{introduce}</p>
+    </div>
+
+    <div class="fade-up mt-12">
+      <List
+        posts={paginated.data}
+        type={postPageConfig.type}
+        heroImageLayout={postPageConfig?.heroImageLayout}
+        lang={lang}
+      />
+    </div>
+
+    <Pagination page={paginated} baseUrl={`/${lang}/posts`} lang={lang} />
+  </div>
+</Layout>

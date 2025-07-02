@@ -5,7 +5,7 @@ import type { CardProps } from './List.astro'
 
 interface Props extends CardProps {}
 
-const { post }: Props = Astro.props
+const { post, lang }: Props = Astro.props
 ---
 
 <div class="group relative block py-6 border-b border-border/60 last:border-none">
@@ -28,7 +28,7 @@ const { post }: Props = Astro.props
         )
       }
     </div>
-    <a href={`/posts/${post.slug}`} class="block -my-[2px]">
+    <a href={`/${lang}/posts/${post.slug}`} class="block -my-[2px]">
       <h3 class="text-base sm:text-lg font-medium text-foreground group-hover:text-accent-foreground transition-colors">
         {post.data.title}
       </h3>
@@ -39,7 +39,7 @@ const { post }: Props = Astro.props
       post.data.tags?.length > 0 && (
         <div class="flex flex-wrap gap-1.5 mt-2">
           {post.data.tags.map((tag) => (
-            <PostTag tag={tag} />
+            <PostTag tag={tag} lang={lang} />
           ))}
         </div>
       )

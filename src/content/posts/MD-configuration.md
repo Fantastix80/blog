@@ -1,6 +1,7 @@
 ---
 title: 'Post Configuration'
 description: 'Comprehensive guide for  post configuration in Litos theme'
+lang: en
 pubDate: 2025-05-01
 tags: ['Configuration','Images','Post']
 recommend: true

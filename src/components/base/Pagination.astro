@@ -1,17 +1,19 @@
 ---
 import type { Page } from 'astro'
-import { POSTS_CONFIG } from '~/config'
+import { i18n, type Locale } from '~/i18n'
 import { cn } from '~/lib/utils'
 
 interface Props {
   page: Page<any>
   baseUrl: string
   class?: string
+  lang: Locale
 }
 
-const { page, baseUrl, class: className = '' } = Astro.props
+const { page, baseUrl, class: className = '', lang } = Astro.props
 
-// 处理大量页码的显示逻辑
+const { prevPageText, nextPageText } = i18n.get(lang).postsConfig
+
 const getVisiblePages = (current: number, total: number) => {
   if (total <= 7) return [...Array(total)].map((_, i) => i + 1)
 
@@ -33,7 +35,7 @@ const visiblePages = getVisiblePages(page.currentPage, page.lastPage)
       }`}
     >
       <span class="icon-[ph--caret-left-light] size-3.5 sm:size-4"></span>
-      <span class="hidden sm:inline">{POSTS_CONFIG.prevPageText}</span>
+      <span class="hidden sm:inline">{prevPageText}</span>
     </a>
 
     <div class="flex items-center gap-1 sm:gap-1.5">
@@ -63,7 +65,7 @@ const visiblePages = getVisiblePages(page.currentPage, page.lastPage)
         page.url.next ? 'text-foreground hover:bg-muted cursor-pointer' : 'text-muted-foreground/40 cursor-not-allowed pointer-events-none'
       }`}
     >
-      <span class="hidden sm:inline">{POSTS_CONFIG.nextPageText}</span>
+      <span class="hidden sm:inline">{nextPageText}</span>
       <span class="icon-[ph--caret-right-light] size-3.5 sm:size-4"></span>
     </a>
   </div>

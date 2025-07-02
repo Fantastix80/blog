@@ -10,6 +10,7 @@ export type CardProps = {
   post: CollectionEntry<'posts'>
   index: number
   heroImageLayout?: HeroImageLayout
+  lang: 'fr' | 'en'
 }
 
 const POST_CARD_COMPONENTS = {
@@ -29,13 +30,14 @@ type Props = {
   type: PostCardType
   customSpacing?: string
   heroImageLayout?: HeroImageLayout
+  lang: 'fr' | 'en'
 }
 
-const { posts, type, customSpacing, heroImageLayout } = Astro.props
+const { posts, type, customSpacing, heroImageLayout, lang } = Astro.props
 const spacingClass = customSpacing || POST_CARD_SPACING_CLASSES[type]
 const PostCardElement = POST_CARD_COMPONENTS[type]
 ---
 
 <div class={cn(spacingClass, 'content-visibility: auto')}>
-  {posts.map((post, index) => <PostCardElement {post} {index} {heroImageLayout} />)}
+  {posts.map((post, index) => <PostCardElement {post} {index} {heroImageLayout} {lang} />)}
 </div>

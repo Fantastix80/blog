@@ -1,6 +1,7 @@
 ---
 title: 'Markdown Writing Guide for Delicious Recipes'
 description: 'Learn Markdown basics through a delicious pasta recipe'
+lang: en
 pubDate: 2025-04-30
 tags: ['Markdown', 'Guide', 'Food']
 heroImage: 'Markdown-syntax-guide.webp'

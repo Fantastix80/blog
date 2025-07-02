@@ -1,4 +1,3 @@
-// @ts-check
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@astrojs/react'
@@ -7,11 +6,15 @@ import sitemap from '@astrojs/sitemap'
 import robotsTxt from 'astro-robots-txt'
 import expressiveCode from 'astro-expressive-code'
 import { remarkPlugins, rehypePlugins } from './plugins'
-import { SITE } from './src/config'
+import { getSiteConfig } from './src/i18n'
+
+const defaultLocale = 'fr'
+const { website, base } = getSiteConfig(defaultLocale)
 
 export default defineConfig({
-  site: SITE.website,
-  base: SITE.base,
+  site: website,
+  base: base,
+  middleware: true,
   prefetch: true,
   vite: {
     plugins: [tailwindcss()],
@@ -29,5 +32,12 @@ export default defineConfig({
     remarkPlugins,
     rehypePlugins,
   },
-  integrations: [sitemap(), robotsTxt(), react(), expressiveCode(), mdx()],
+  integrations: [
+    sitemap(),
+    robotsTxt(),
+    react(),
+    expressiveCode(),
+    mdx(),
+  ],
 })
+

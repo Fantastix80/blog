@@ -6,9 +6,10 @@ import ZoomImage from '~/components/base/ZoomImage.astro'
 interface Props {
   frontmatter: any
   minutesRead?: string
+  lang: 'fr' | 'en'
 }
 
-const { frontmatter, minutesRead } = Astro.props
+const { frontmatter, minutesRead, lang } = Astro.props
 ---
 
 <article class="relative fade-up">
@@ -56,7 +57,7 @@ const { frontmatter, minutesRead } = Astro.props
               {
                 frontmatter.tags?.map((tag: string) => (
                   <a
-                    href={`/tags/${tag}`}
+                    href={`/${lang}/tags/${tag}`}
                     class="px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs tracking-widest
                      bg-muted text-tag-text border border-tag-border rounded-full
                      hover:bg-tag-bg-hover hover:border-primary/30 hover:text-foreground
