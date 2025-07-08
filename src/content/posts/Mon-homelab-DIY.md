@@ -128,7 +128,7 @@ J’utilise :link[Traefik]{id=https://traefik.io/traefik} comme **proxy inverse*
 
 C’est un outil très pratique pour:
 
-- gérer automatiquement les **certificats SSL** (via :link[Cloudflare]{id=https://www.cloudflare.com/fr-fr/})
+- gérer automatiquement les **certificats SSL**
 - rediriger les requêtes vers le bon service en fonction du domaine
 - centraliser l’accès à plusieurs services auto-hébergés
 - avoir une **interface web de monitoring**
@@ -166,7 +166,7 @@ Tous les échanges entre notre serveur et le navigateur du client seront ainsi b
 ### Sites full custom
 
 Une des raisons principale pour laquelle j'avais envie de m'acheter un serveur et de faire mon propre homelab était pour l'hébergement de mes projets web. J'ai par le passé réalisé de nombreux sites en utilisant de nombreuses stack différentes passant du site classique en HTML/CSS à des sites plus aboutis utilisant des Frameworks tel que :link[React]{id=https://fr.react.dev/}.
-Ces projets prenaient tous la poussière sur mon github depuis un moment donc quand j'ai finalement reçu mon serveur, héberger mes sites web aura été l'une de mes premières actions.
+Ces projets prenaient tous la poussière sur mon :link[GitHub]{id=https://github.com/Fantastix80} depuis un moment donc quand j'ai finalement reçu mon serveur, héberger mes sites web aura été l'une de mes premières actions.
 
 Voici une liste des différents projets web que j'héberge actuellement:
 - :link[Mon portfolio]{id=https://jeanvw.fr}
