@@ -213,7 +213,7 @@ Désormais, je n'ai plus à m'inquiéter de l'espace de stockage restant sur mon
 
 ## VS Code server
 
-Finalement, pour réaliser mes projets j'avais forcément besoin d'un IDE alors quand un amis m'a parlé de :link[VS Code server]{id=https://code.visualstudio.com/docs/remote/vscode-server}, j'ai sauté sur l'occasion pour l'installer. C'est extrêment rapide vu qu'il existe une image docker pour cela et en 10 minutes à peine, j'avais un VS Code accessible depuis mon navigateur.
+Finalement, pour réaliser mes projets j'avais forcément besoin d'un IDE alors quand un ami m'a parlé de :link[VS Code server]{id=https://code.visualstudio.com/docs/remote/vscode-server}, j'ai sauté sur l'occasion pour l'installer. C'est extrêment rapide vu qu'il existe une image docker pour cela et en 10 minutes à peine, j'avais un VS Code accessible depuis mon navigateur.
 
 Désormais, peu importe l'ordinateur sur lequel je suis, je peux depuis n'importe quel navigateur web accéder à mon VS Code avec tous mes projets en cours disponible. VS Code Server propose également de créer différents comptes vous permettant ainsi d'y accéder avec vos amis afin de pouvoir développer ensemble.
 
