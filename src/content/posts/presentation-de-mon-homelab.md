@@ -5,8 +5,8 @@ lang: fr
 pubDate: 2025-07-07
 tags: ['Homelab']
 recommend: true
-heroImage: 'Mon-homelab-DIY.png'
-ogImage: 'Mon-homelab-DIY.png'
+heroImage: 'presentation-homelab.png'
+ogImage: 'presentation-homelab.png'
 ---
 
 Dans cet article, je vous présente mon tout premier **homelab** et tout ce qu’il contient (pour l’instant).  
@@ -26,7 +26,7 @@ Louer un VPS en ligne est aussi possible, mais ce n’est pas recommandé: tout 
 
 Pour ma part, j’ai acheté fin mars 2025 un **Dell OptiPlex 5060 Micro** pour me servir de serveur.
 
-![Optiplex](~/assets/images/mon-homelab-diy/optiplex.png)(style:width:50%)
+![Optiplex](~/assets/images/presentation-homelab/optiplex.png)(style:width:50%)
 
 Voici ses spécificités techniques:
 
@@ -53,7 +53,7 @@ Côté système, j’ai installé **Proxmox**, qui me permet de:
 - Surveiller l’utilisation des ressources
 - Centraliser la gestion du serveur
 
-![Vue d'ensemble du homelab](~/assets/images/mon-homelab-diy/homelab-overview.png)(style:width:100%)
+![Vue d'ensemble du homelab](~/assets/images/presentation-homelab/homelab-overview.png)(style:width:100%)
 
 ---
 
@@ -118,11 +118,11 @@ C’est une solution moderne qui permet de:
 
 Il me permet donc de me connecter aux différents services de mon homelab depuis le même endroit de façon sécurisé (Proxmox, pfSense, Traefik, etc.) sans avoir à les exposer directement à internet.
 
-![Vue d'ensemble du homelab](~/assets/images/mon-homelab-diy/teleport-dashboard.png)(style:width:100%)
+![Vue d'ensemble du homelab](~/assets/images/presentation-homelab/teleport-dashboard.png)(style:width:100%)
 
 Et comme Teleport permet la gestion de compte avec des rôles, vous pouvez créer des comptes pour vos amis pour qu'ils puissent accéder à certains services de votre homelab.
 
-![Vue d'ensemble du homelab](~/assets/images/mon-homelab-diy/teleport-login.png)(style:width:100%)
+![Vue d'ensemble du homelab](~/assets/images/presentation-homelab/teleport-login.png)(style:width:100%)
 
 ---
 
@@ -225,7 +225,7 @@ Pour ma part, C'est sur ce VS Code que j'héberge, développe et maintien ce blo
 
 Si la mise en place d'un homelab vous intéresse, je vous recommande vivement de suivre les prochains guides d'installation dans l'ordre suivant:
 
-1. Configuration d'une IP statique sur votre box internet
+1. Configuration d'une IP publique dédiée sur votre box internet (Bbox)
 2. Mise en place du serveur avec Proxmox
 3. Achat et configuration d'un nom de domaine
 4. Mise en place d'un réseau local avec pfSense

@@ -5,8 +5,8 @@ lang: en
 pubDate: 2025-07-08
 tags: ['Homelab']
 recommend: true
-heroImage: 'Mon-homelab-DIY.png'
-ogImage: 'Mon-homelab-DIY.png'
+heroImage: 'presentation-homelab.png'
+ogImage: 'presentation-homelab.png'
 ---
 
 In this article, I introduce you to my very first **homelab** and everything it contains (for now).  
@@ -26,7 +26,7 @@ Renting a VPS online is also an option, but it’s not recommended: the whole po
 
 As for me, I bought a **Dell OptiPlex 5060 Micro** in late March 2025 to serve as my server.
 
-![Optiplex](~/assets/images/mon-homelab-diy/optiplex.png)(style:width:50%)
+![Optiplex](~/assets/images/presentation-homelab/optiplex.png)(style:width:50%)
 
 Here are its technical specifications:
 
@@ -54,7 +54,7 @@ On the system side, I installed **Proxmox**, which allows me to:
 - Monitor resource usage
 - Centralize server management
 
-![Homelab overview](~/assets/images/mon-homelab-diy/homelab-overview.png)(style:width:100%)
+![Homelab overview](~/assets/images/presentation-homelab/homelab-overview.png)(style:width:100%)
 
 ---
 
@@ -120,11 +120,11 @@ It’s a modern solution that allows you to:
 
 It allows me to securely access all my homelab services (Proxmox, pfSense, Traefik, etc.) from a single interface without directly exposing them to the Internet.
 
-![Homelab overview](~/assets/images/mon-homelab-diy/teleport-dashboard.png)(style:width:100%)
+![Homelab overview](~/assets/images/presentation-homelab/teleport-dashboard.png)(style:width:100%)
 
 And since Teleport supports role-based account management, you can create accounts for your friends so they can access specific services within your homelab.
 
-![Teleport login](~/assets/images/mon-homelab-diy/teleport-login.png)(style:width:100%)
+![Teleport login](~/assets/images/presentation-homelab/teleport-login.png)(style:width:100%)
 
 ---
 
@@ -235,7 +235,7 @@ As for me, this is the VS Code instance where I host, develop, and maintain this
 
 If you’re interested in building your own homelab, I highly recommend following the upcoming setup guides in this order:
 
-1. Set a static IP address on your home router
+1. Set a public dedicated IP address on your home router (Bbox)
 2. Set up the server with Proxmox
 3. Purchase and configure a domain name
 4. Set up a local network with pfSense

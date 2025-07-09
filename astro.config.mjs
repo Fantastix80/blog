@@ -7,6 +7,7 @@ import robotsTxt from 'astro-robots-txt'
 import expressiveCode from 'astro-expressive-code'
 import { remarkPlugins, rehypePlugins } from './plugins'
 import { getSiteConfig } from './src/i18n'
+import rehypeMermaid from 'rehype-mermaid';
 
 const defaultLocale = 'fr'
 const { website, base } = getSiteConfig(defaultLocale)
@@ -28,9 +29,19 @@ export default defineConfig({
     },
   },
   markdown: {
-    syntaxHighlight: false,
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid']
+    },
     remarkPlugins,
-    rehypePlugins,
+    rehypePlugins: [
+      ...rehypePlugins,
+      [rehypeMermaid, {
+        strategy: 'img-svg',
+        dark: true,
+        theme: 'default'
+      }]
+    ],
   },
   integrations: [
     sitemap(),
