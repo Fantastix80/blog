@@ -103,6 +103,11 @@ Le point d'entrée de ce réseau local est la machine virtuelle sur laquelle est
 
 ## Bastion
 
+> [!note]
+> Un **bastion**, c’est une sorte de **porte d’entrée sécurisée** qui permet d’accéder à nos serveurs ou services privés depuis l’extérieur (donc internet).  
+> Plutôt que d’ouvrir plusieurs ports sur notre réseau, il suffit d’en ouvrir **qu’un seul, hautement sécurisé**: celui du bastion.  
+> Il gère l’authentification sécurisée (comme la 2FA), journalise les connexions, et centralise la gestion des accès à distance.
+
 Pour sécuriser les connexions à mon homelab, j’ai choisi :link[Teleport]{id=https://goteleport.com/}.  
 C’est une solution moderne qui permet de:
 
@@ -111,18 +116,22 @@ C’est une solution moderne qui permet de:
 - intégrer l’authentification à double facteur (2FA)
 - créer un tunnel sécurisé sans exposer les ports directement
 
-Cela simplifie beaucoup la gestion des connexions distantes, surtout quand plusieurs machines virtuelles / conteneurs LXC sont impliquées.
 Il me permet donc de me connecter aux différents services de mon homelab depuis le même endroit de façon sécurisé (Proxmox, pfSense, Traefik, etc.) sans avoir à les exposer directement à internet.
 
 ![Vue d'ensemble du homelab](~/assets/images/mon-homelab-diy/teleport-dashboard.png)(style:width:100%)
 
-Et comme Teleport permet la gestion de compte avec des rôles, vous pouvez créer des comptes pour vos amis pour qu'il puisse accéder à certains services de votre homelab.
+Et comme Teleport permet la gestion de compte avec des rôles, vous pouvez créer des comptes pour vos amis pour qu'ils puissent accéder à certains services de votre homelab.
 
 ![Vue d'ensemble du homelab](~/assets/images/mon-homelab-diy/teleport-login.png)(style:width:100%)
 
 ---
 
 ## Proxy inverse
+
+> [!note]
+> Un **proxy inverse** est un outil qui sert **d’intermédiaire entre Internet et nos services internes**.  
+> Il reçoit les requêtes entrantes (comme celles du navigateur) et les **redirige vers le bon serveur**, selon le nom de domaine.  
+> Il peut aussi gérer des **certificats SSL**, faire du **load balancing**, ou **centraliser l’accès** à vos services.
 
 J’utilise :link[Traefik]{id=https://traefik.io/traefik} comme **proxy inverse**.
 
@@ -171,7 +180,7 @@ Ces projets prenaient tous la poussière sur mon :link[GitHub]{id=https://github
 Voici une liste des différents projets web que j'héberge actuellement:
 - :link[Mon portfolio]{id=https://jeanvw.fr}
 - :link[Un site de case opening pokemon]{id=https://pokemon.jeanvw.fr}
-- :link[Un site à l'effigie de Michael Jackson]{id=https://jeanvw.fr}
+- :link[Un site à l'effigie de Michael Jackson]{id=https://michael-jackson.jeanvw.fr}
 - :link[Un site pour mon serveur minecraft]{id=https://play.jeanvw.fr}
 
 J'ai dockerisé la plupart de ces projets afin de faciliter leurs déploiements à l'avenir.

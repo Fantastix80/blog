@@ -97,13 +97,18 @@ That’s why I opted for a **dedicated firewall**, based on **pfSense**, which l
 > OPNsense is **fully open source**, actively maintained by a vibrant community, with a modern interface.  
 > pfSense exists in a free version (CE) and a paid version (Plus), and Netgate is putting less emphasis on the free edition: :link[Netgate]{id=https://www.netgate.com/}.
 
-In my case, I use pfSense to manage a **local network dedicated to my homelab**, completely isolated from my home Wi-Fi network. So I have the Wi-Fi LAN from my box on 192.168.X.X (for all household devices) and another LAN for the homelab on 10.0.1.X (for all containers and VMs).
+In my case, I use pfSense to manage a **local network dedicated to my homelab**, completely isolated from my home Wi-Fi network. So I have the Wi-Fi LAN from my internet router on 192.168.X.X (for all household devices) and another LAN for the homelab on 10.0.1.X (for all containers and VMs).
 
 The entry point for this LAN is the virtual machine running pfSense. So, when someone tries to access my website at https://jeanvw.fr, their DNS resolves to my router’s public IP. The router receives the request and forwards it (via port forwarding) to 192.168.X.X (pfSense), which in turn forwards the request to one of my homelab’s machines on 10.0.1.X.
 
 ---
 
 ## Bastion host
+
+> [!note]
+> A **bastion host** is like a secure gateway that lets you access your private servers or services safely from the outside (like internet).  
+> Instead of opening multiple doors (ports) to your network, you only open **one single, highly protected access point**: the bastion.  
+> It handles secure authentication (like MFA), logs connections, and gives you central control over remote access.
 
 To secure access to my homelab, I chose :link[Teleport]{id=https://goteleport.com/}.  
 It’s a modern solution that allows you to:
@@ -113,18 +118,22 @@ It’s a modern solution that allows you to:
 - Enable two-factor authentication (2FA)
 - Create a secure tunnel without exposing ports
 
-This simplifies remote access management, especially with several virtual machines / LXC containers involved.  
 It allows me to securely access all my homelab services (Proxmox, pfSense, Traefik, etc.) from a single interface without directly exposing them to the Internet.
 
 ![Homelab overview](~/assets/images/mon-homelab-diy/teleport-dashboard.png)(style:width:100%)
 
-And since Teleport supports role-based account management, you can create accounts for your friends so they can access specific services in your homelab.
+And since Teleport supports role-based account management, you can create accounts for your friends so they can access specific services within your homelab.
 
 ![Teleport login](~/assets/images/mon-homelab-diy/teleport-login.png)(style:width:100%)
 
 ---
 
 ## Reverse Proxy
+
+> [!note]
+> A **reverse proxy** is a tool that acts as an **intermediary between the internet and your internal services**.  
+> It receives incoming requests (like from your browser) and **forwards them to the right server**, depending on the domain name.  
+> It can also handle things like **SSL certificates**, **load balancing**, and **centralized access control**.
 
 I use :link[Traefik]{id=https://traefik.io/traefik} as a **reverse proxy**.
 
@@ -158,7 +167,7 @@ http:
 2. I reload the Docker container running Traefik  
 3. And voilà! I can instantly test it live in my browser.
 
-With a bit of configuration, Traefik can automatically generate SSL certificates, which gives us a secure connection between the client’s browser and our server. Then, within the internal network, Traefik forwards traffic to the appropriate machine hosting the web service, even if it's not using HTTPS.  
+With a bit of configuration, Traefik can automatically generate SSL certificates, which gives us a secure connection between the client’s browser and our server. Inside the network, Traefik forwards traffic to the appropriate machine hosting the web service, even if it's not using HTTPS.  
 As a result, all communication between the client and the server remains secure.
 
 ---
@@ -175,7 +184,7 @@ Here’s a list of the different web projects I currently host:
 
 - :link[My portfolio]{id=https://jeanvw.fr}
 - :link[A Pokemon case-opening site]{id=https://pokemon.jeanvw.fr}
-- :link[A fan site for Michael Jackson]{id=https://jeanvw.fr}
+- :link[A fan site for Michael Jackson]{id=https://michael-jackson.jeanvw.fr}
 - :link[A site for my Minecraft server]{id=https://play.jeanvw.fr}
 
 I’ve containerized most of these projects with Docker to simplify future deployments.
@@ -197,7 +206,7 @@ This was the very first thing I did with my homelab: setting up a Minecraft serv
 My friends and I had been talking about starting yet another Minecraft survival world for a while. But this time would be different as I’d be hosting it myself 😎. So I got to work deploying a modded Minecraft server using the Better Minecraft 4 modpack.  
 I’d already created several Minecraft servers on VPS platforms before, so this was fairly easy for me.
 
-This modded server (especially with the BMC4 pack) is pretty resource-hungry, but we were still able to play together (around 7–8 players) without lag as long as no one was exploring new areas. Otherwise, the lag started creeping in… and don’t even get me started on when multiple people were exploring different dimensions 🫠.
+This modded server (especially with the BMC4 pack) is pretty resource-hungry, but we were still able to play together (around 7–8 players) without lag as long as no one was generating new chunks. Otherwise, the lag started creeping in… and don’t even get me started on when multiple people were exploring different dimensions 🫠.
 
 ---
 
