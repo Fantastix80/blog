@@ -188,6 +188,10 @@ Finalement, vous n'aurez plus qu'à appuyer sur `s` pour éteindre l'ordinateur 
 
 Par ailleurs, vous retrouverez sur votre clé USB un certificat d'effacement si besoin.
 
+---
+
+## Conclusion
+
 En résumé, bien effacer un disque ne se fait pas en 2 clics. Mais avec les bons outils, c’est accessible à tous. ShredOS en est la preuve: simple, rapide, et open source.
 
 Que ce soit pour une revente, une mise au rebut ou juste votre tranquillité d’esprit: effacez proprement vos données.
