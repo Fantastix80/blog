@@ -3,7 +3,7 @@ title: "Configuration d'une IPv4 publique dédiée pour sa Bbox"
 description: "Tutoriel afin de configurer une IPv4 publique dédiée sur sa box internet (pour une Bbox)"
 lang: fr
 pubDate: 2025-07-09
-tags: ['Homelab', 'Tutoriel', 'Bbox', 'IPv4 dédiée']
+tags: ['Homelab', 'Tutoriel', 'Bbox']
 recommend: true
 heroImage: 'bbox.png'
 ogImage: 'bbox.png'
@@ -12,6 +12,8 @@ ogImage: 'bbox.png'
 Dans cette suite d’articles, je vais vous montrer comment j’ai monté mon homelab de A à Z. On va voir ensemble toutes les étapes à suivre, pas à pas, en gardant les choses simples et claires pour que même les débutants puissent suivre.
 
 Comme j’utilise une Bbox comme box internet, ce tutoriel s’appuie sur celle-ci. Si vous avez une box différente (Livebox, Freebox, etc.), le principe restera le même, mais certaines étapes peuvent varier. Je vous invite donc à chercher la documentation propre à votre fournisseur d’accès.
+
+---
 
 ## Qu’est-ce qu’une adresse IPv4 ?
 
@@ -22,6 +24,8 @@ Comme j’utilise une Bbox comme box internet, ce tutoriel s’appuie sur celle-
 > *Est-ce que ça signifie que chaque appareil connecté à Internet a sa propre adresse IPv4 ?*
 
 Oui… mais pas tout à fait.
+
+---
 
 ## Réseau local (LAN) vs Réseau Internet (WAN)
 
@@ -45,6 +49,8 @@ C’est pourquoi, **même si votre ordinateur a une adresse IPv4**, il **n’est
 > - Vos appareils sont comme les employés avec des numéros internes.
 > - La box est la réception.
 > - Et l’adresse publique est le numéro de téléphone de l’entreprise visible depuis l’extérieur. Il mène à l'accueil, qui s'occupera ensuite de rediriger vers le bon employé.
+
+---
 
 ## Les limites du protocole IPv4
 
@@ -78,6 +84,8 @@ graph TB
 >
 > Il existe **65 536 ports**, numérotés de 0 à 65535.
 
+---
+
 ## Pourquoi avons-nous besoin d'une IP publique dédiée pour notre homelab ?
 
 Lorsque vous mettez en place un homelab, le but est souvent de pouvoir **accéder à vos services depuis l’extérieur**, par exemple pour :
@@ -99,6 +107,8 @@ Ce que l’on souhaite donc, c’est **obtenir une adresse IPv4 publique fixe et
 - Vous récupérez **l’accès complet à tous les ports (1 à 65535)**.
 - Elle **ne change jamais**, même après un redémarrage de la box.
 
+---
+
 ## Connexion à votre compte client Bouygues Telecom
 
 Pour accéder à votre espace client Bouygues Telecom, rendez-vous sur ce site: :link[Mon compte Bouygues]{id=https://www.bouyguestelecom.fr/mon-compte}
@@ -108,6 +118,7 @@ Connectez-vous avec vos identifiants.
 > [!tip]
 > Si vous avez oublié votre mot de passe, vous pouvez le réinitialiser en appuyant sur :link[mot de passe oublié ?]{id=https://www.bouyguestelecom.fr/connexion/mot-de-passe-oublie}
 
+---
 
 ## Configuration de l'IPv4 publique dédiée
 
