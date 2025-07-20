@@ -225,8 +225,8 @@ Pour ma part, C'est sur ce VS Code que j'héberge, développe et maintien ce blo
 
 Si la mise en place d'un homelab vous intéresse, je vous recommande vivement de suivre les prochains guides d'installation dans l'ordre suivant:
 
-1. Configuration d'une IP publique dédiée sur votre box internet (Bbox)
-2. Mise en place du serveur avec Proxmox
+1. :link[Configuration d'une IP publique dédiée sur votre box internet (Bbox)]{id=https://blog.jeanvw.fr/fr/posts/configurer-sa-bbox-pour-avoir-une-ip-publique-dediee/}
+2. :link[Mise en place du serveur avec Proxmox]{id=https://blog.jeanvw.fr/fr/posts/mise-en-place-de-proxmox-sur-un-serveur/}
 3. Achat et configuration d'un nom de domaine
 4. Mise en place d'un réseau local avec pfSense
 5. Mise en place d'un proxy inverse avec Traefik

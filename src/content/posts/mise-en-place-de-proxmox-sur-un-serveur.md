@@ -5,8 +5,8 @@ lang: fr
 pubDate: 2025-07-20
 tags: ['Homelab', 'Tutoriel', 'Proxmox']
 recommend: true
-heroImage: 'presentation-homelab.png'
-ogImage: 'presentation-homelab.png'
+heroImage: 'mise-en-place-proxmox.png'
+ogImage: 'mise-en-place-proxmox.png'
 ---
 
 Dans cette suite d’articles, je vais vous montrer comment j’ai monté mon homelab de A à Z. On va voir ensemble toutes les étapes à suivre, pas à pas, en gardant les choses simples et claires pour que même les débutants puissent suivre.

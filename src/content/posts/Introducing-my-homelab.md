@@ -235,8 +235,8 @@ As for me, this is the VS Code instance where I host, develop, and maintain this
 
 If you’re interested in building your own homelab, I highly recommend following the upcoming setup guides in this order:
 
-1. Set a public dedicated IP address on your home router (Bbox)
-2. Set up the server with Proxmox
+1. :link[Set a public dedicated IP address on your home router (Bbox)]{id=https://blog.jeanvw.fr/en/posts/setting-up-dedicated-public-ipv4-address-for-your-bbox/}
+2. :link[Set up the server with Proxmox]{id=https://blog.jeanvw.fr/en/posts/setting-up-proxmox-on-a-server/}
 3. Purchase and configure a domain name
 4. Set up a local network with pfSense
 5. Set up a reverse proxy with Traefik

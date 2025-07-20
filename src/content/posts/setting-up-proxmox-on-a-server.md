@@ -5,8 +5,8 @@ lang: en
 pubDate: 2025-07-20
 tags: ['Homelab', 'Tutorial', 'Proxmox']
 recommend: true
-heroImage: 'presentation-homelab.png'
-ogImage: 'presentation-homelab.png'
+heroImage: 'mise-en-place-proxmox.png'
+ogImage: 'mise-en-place-proxmox.png'
 ---
 
 In this series of articles, I’ll walk you through how I built my homelab from A to Z. We'll go through all the steps together, keeping things simple and clear so even beginners can follow along.
