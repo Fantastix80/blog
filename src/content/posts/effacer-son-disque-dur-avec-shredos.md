@@ -4,7 +4,7 @@ description: "Présentation de l'outil ShredOS pour effacer entièrement et déf
 draft: false
 lang: fr
 pubDate: 2025-07-14
-tags: ['ShredOS', 'Tutoriel']
+tags: ['ShredOS', 'Tutoriel', 'Rufus']
 recommend: true
 heroImage: 'shredos.png'
 ogImage: 'shredos.png'
@@ -105,11 +105,18 @@ Une fois terminé, il vous l'indiquera d'une barre verte en bas de l'écran avec
 ## Préparation de la machine pour l'effacement du disque
 
 Une fois la clé USB prête, vous allez devoir préparer votre machine pour la réinitialisation.
-Cela va nécessiter quelques actions de notre part dans le BIOS de la machine. Chaque BIOS est différent mais rassurez-vous, les actions restent les mêmes à effectuer, il faudra simplement les chercher au préalable. Google est votre ami si vous n'avez pas l'immense honneur d'avoir un Dell sous la main (car je vais faire la démo avec un PC Dell 😜).
+Cela va nécessiter quelques actions de notre part dans le BIOS de la machine.
+
+> [!note]
+> Le BIOS (pour Basic Input/Output System) est un petit programme intégré à la carte mère de ton ordinateur.
+> Il s’exécute dès le démarrage de l’ordinateur **avant le système d’exploitation** (Windows, Linux, etc.).
+> C’est lui qui permet de gérer les réglages de base, comme l’ordre de démarrage (clé USB, disque dur…), l’activation de certaines fonctions matérielles, ou encore les options de sécurité comme le Secure Boot.
+
+Chaque BIOS est différent mais rassurez-vous, les actions restent les mêmes à effectuer, il faudra simplement les chercher au préalable. Google est votre ami si vous n'avez pas l'immense honneur d'avoir un Dell sous la main (car je vais faire la démo avec un PC Dell 😜).
 
 Aller on s'y met !
 1. Premièrement, on branche la clé USB.
-2. Secondo, on allume l'ordinateur et on accède au BIOS. Pour ce faire, avec les PC Dell, il suffit d'appuyer sur `F2` pile lorsque le logo apparaît mais c'est plus fun de simplement spammer la touche jusqu'à que vous rentriez dans le BIOS.
+2. Secondo, on allume l'ordinateur et on accède au BIOS. Pour ce faire, avec les PC Dell, il suffit d'appuyer sur `F2` pile lorsque le logo apparaît mais c'est plus fun de simplement spammer la touche jusqu'à ce que vous rentriez dans le BIOS.
 3. Pour les changements à faire, on commence par s'assurer que le **secure boot** est bien **désactivé**. Pour ce faire, on se rend dans la section `Secure Boot > Secure Boot Enable` et on décoche la case:
 
 ![Secure Boot BIOS](~/assets/images/effacement-disque-dur-shredos/secure_boot_bios.png)(style:width:100%)

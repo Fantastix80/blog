@@ -39,7 +39,8 @@ export default defineConfig({
       [rehypeMermaid, {
         strategy: 'img-svg',
         dark: true,
-        theme: 'default'
+        theme: 'default',
+        debug: true
       }]
     ],
   },

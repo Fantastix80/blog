@@ -103,7 +103,14 @@ When it’s done, you’ll see a green bar with `READY`.
 
 ## Prepping the machine for drive wiping
 
-With your bootable USB ready, you’ll now need to change a few BIOS settings. Every BIOS is different, but don’t worry the steps are mostly the same. If you're not on a Dell machine (which I’ll use in this demo), just look up the equivalent settings for your system.
+With your bootable USB ready, you’ll now need to change a few BIOS settings.
+
+> [!note]
+> The BIOS (Basic Input/Output System) is a small built-in program stored on your computer’s motherboard.
+> It runs **before your operating system starts** (like Windows, Linux, etc.) and lets you configure low-level system settings.
+> For example, you can use it to change the boot order, enable or disable hardware features, or adjust security settings like Secure Boot.
+
+Every BIOS is different, but don’t worry the steps are mostly the same. If you're not on a Dell machine (which I’ll use in this demo), just look up the equivalent settings for your system.
 
 Let’s go:
 1. Plug in your USB drive
