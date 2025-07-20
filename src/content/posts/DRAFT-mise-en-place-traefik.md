@@ -1,13 +1,13 @@
 ---
 title: "Configuration d'une IPv4 publique dédiée pour sa Bbox"
 description: "Tutoriel afin de configurer une IPv4 publique dédiée sur sa box internet (pour une Bbox)"
-draft: true
 lang: fr
 pubDate: 2025-07-09
 tags: ['Homelab', 'Tutoriel']
 recommend: true
 heroImage: 'bbox.png'
 ogImage: 'bbox.png'
+draft: true
 ---
 
 

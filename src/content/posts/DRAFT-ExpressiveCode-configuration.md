@@ -7,6 +7,7 @@ tags: ['Configuration', 'Code Blocks', 'Styling']
 heroImage: 'ExpressiveCode-Configuration.webp'
 ogImage: 'ExpressiveCode-Configuration.webp'
 recommend: true
+draft: true
 ---
 
 In Markdown documents, we use code blocks to display code snippets and other content. This document explains how to customize the code block configuration.

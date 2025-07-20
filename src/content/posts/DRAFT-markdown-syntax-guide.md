@@ -6,6 +6,7 @@ pubDate: 2025-04-30
 tags: ['Markdown', 'Guide', 'Food']
 heroImage: 'Markdown-syntax-guide.webp'
 ogImage: 'Markdown-syntax-guide.webp'
+draft: true
 ---
 
 This guide will show you how to format text using Markdown through a delicious pasta recipe. Let's explore the world of food while learning Markdown syntax!

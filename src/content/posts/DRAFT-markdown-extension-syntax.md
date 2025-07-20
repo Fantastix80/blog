@@ -9,6 +9,7 @@ heroImage: 'markdown-extension-syntax.webp'
 ogImage: 'markdown-extension-syntax.webp'
 heroImageAspectRatio: '16/9'
 tags: ['Markdown', 'Guide']
+draft: true
 ---
 
 This guide has made slight changes based on the [markdown-mdx-extended-features](https://astro-antfustyle-theme.vercel.app/blog/markdown-mdx-extended-features/). **Thank you** to the original author :link[Stephanie Lin]{#@lin-stephanie} for efforts.

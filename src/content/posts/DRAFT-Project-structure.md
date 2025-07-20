@@ -7,6 +7,7 @@ tags: ['Project-structure']
 recommend: true
 heroImage: 'Project-structure.webp'
 ogImage: 'Project-structure.webp'
+draft: true
 ---
 
 This post will help you quickly understand the project structure of [Litos theme](https://github.com/Dnzzk2/Litos) .

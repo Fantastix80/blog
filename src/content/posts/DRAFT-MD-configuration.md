@@ -7,6 +7,7 @@ tags: ['Configuration','Images','Post']
 recommend: true
 heroImage: 'MD-Configuration.webp'
 ogImage: 'MD-Configuration.webp'
+draft: true
 ---
 
 This document provides a comprehensive guide for post configuration in the Litos theme, including front matter settings and image display options.

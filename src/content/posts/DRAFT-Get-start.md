@@ -7,6 +7,7 @@ recommend: true
 tags: ['Tutorial']
 heroImage: 'Getting-Started.webp'
 ogImage: 'Getting-Started.webp'
+draft: true
 ---
 
 Welcome to **[Litos Theme](https://github.com/Dnzzk2/Litos)**! This comprehensive guide will walk you through setting up and launching your project with Litos, a modern blog theme built with Astro.js.

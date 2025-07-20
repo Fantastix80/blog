@@ -9,6 +9,7 @@ ogImage: 'Thank-you.webp'
 heroImageAspectRatio: '16/9'
 recommend: false
 tags: ['Thanks']
+draft: true
 ---
 
 Thank you here for some open source projects and reference websites.

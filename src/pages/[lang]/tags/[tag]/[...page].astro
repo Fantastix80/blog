@@ -18,7 +18,10 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
     .flatMap((lang) =>
       uniqueTags.map((tag) => {
         const tagPosts = sortedPosts.filter(
-          (post) => post.data.tags?.includes(tag) && post.data.lang === lang
+          (post) =>
+            post.data.tags?.includes(tag) &&
+            post.data.lang === lang &&
+            post.data.draft !== true
         )
 
         return paginate(tagPosts, {
