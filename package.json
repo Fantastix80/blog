@@ -11,7 +11,8 @@
     "format": "prettier . --check --ignore-unknown",
     "format:write": "prettier . --write --ignore-unknown --cache",
     "postbuild": "pagefind --site dist",
-    "serve": "node serve.js"
+    "serve": "node serve.js",
+    "start": "rm -rf dist/ && npm run build && npm run serve"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.1",
