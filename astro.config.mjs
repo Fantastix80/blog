@@ -25,7 +25,7 @@ export default defineConfig({
     },
     server: {
       host: true,
-      allowedHosts: ['blog.jeanvw.fr'],
+      allowedHosts: ['blog.jeanvw.fr', 'dev-blog.jeanvw.fr'],
     },
   },
   markdown: {
