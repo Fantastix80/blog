@@ -37,7 +37,7 @@ export default defineConfig({
     rehypePlugins: [
       ...rehypePlugins,
       [rehypeMermaid, {
-        strategy: 'img-svg',
+        strategy: 'inline-svg',
         dark: true,
         theme: 'default',
         debug: true
