@@ -5,8 +5,8 @@ lang: fr
 pubDate: 2025-11-15
 tags: ['Homelab', 'Tutoriel', 'PfSense', 'Network']
 recommend: true
-heroImage: 'bbox.png'
-ogImage: 'bbox.png'
+heroImage: 'mise-en-place-pfsense.png'
+ogImage: 'mise-en-place-pfsense.png'
 draft: false
 ---
 
