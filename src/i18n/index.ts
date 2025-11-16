@@ -105,6 +105,7 @@ const getSkillsShowcaseConfig = (): SkillsShowcaseConfig => ({
         { name: 'Wireshark', icon: 'icon-[simple-icons--wireshark]' },
         { name: 'Linux', icon: 'icon-[mdi--linux]' },
         { name: 'ACL', icon: 'icon-[mdi--mountain-outline]' },
+        { name: 'Burp Suite', icon: 'icon-[simple-icons--burpsuite]' },
       ],
     },
   ],
