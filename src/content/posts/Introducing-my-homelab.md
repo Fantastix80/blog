@@ -238,7 +238,7 @@ If you’re interested in building your own homelab, I highly recommend followin
 1. :link[Set a public dedicated IP address on your home router (Bbox)]{id=https://blog.jeanvw.fr/en/posts/setting-up-dedicated-public-ipv4-address-for-your-bbox/}
 2. :link[Set up the server with Proxmox]{id=https://blog.jeanvw.fr/en/posts/setting-up-proxmox-on-a-server/}
 3. :link[Purchase and configure a domain name]{id=https://blog.jeanvw.fr/en/posts/buying-and-configuring-a-domain-name/}
-4. Set up a local network with pfSense
+4. :link[Set up a local network with pfSense]{id=https://blog.jeanvw.fr/en/posts/setting-up-pfsense/}
 5. Set up a reverse proxy with Traefik
 6. Set up a bastion host using Teleport
 7. Set up a VS Code Server

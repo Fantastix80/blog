@@ -7,7 +7,6 @@ tags: ['Homelab', 'Tutorial', 'PfSense', 'Network']
 recommend: true
 heroImage: 'mise-en-place-pfsense.png'
 ogImage: 'mise-en-place-pfsense.png'
-draft: false
 ---
 
 In this series of articles, I’ll show you how I built my homelab from A to Z.  

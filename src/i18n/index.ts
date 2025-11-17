@@ -25,8 +25,8 @@ const getSiteConfig = (locale: Locale): Site => ({
       : "A cybersecurity french student's blog",
   description1:
     locale === 'fr'
-      ? "Salut ! Je suis Jean, étudiant en cybersécurité. J'ai un homelab, un SOC, et je travaille comme ingénieur sécurité. Ce blog suit mon parcours."
-      : "Hey ! I'm Jean a 4th year cybersecurity student. I have built a personal homelab (also working on a personnal SOC), CDSA certified and currently interested in CTFs. I work as a cybersecurity engineer so I will use this blog to track my journey into the IT world.",
+      ? "Salut ! Je suis Jean, étudiant en cybersécurité. J'ai un homelab, un SOC, certifié CDSA et je participe à certains CTF. Je travaille comme ingénieur sécurité et ce blog suit mon parcours."
+      : "Hey ! I'm Jean a 5th year cybersecurity student. I have built a personal homelab (also working on a personnal SOC), CDSA certified and currently interested in CTFs. I work as a cybersecurity engineer so I will use this blog to track my journey into the IT world.",
   description2:
     locale === 'fr'
       ? "C'est un pense-bête pour moi, mais tu pourrais y trouver de l'intérêt ;)"
